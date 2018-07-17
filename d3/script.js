@@ -3,7 +3,7 @@ d3.select("body")
     .append("p")
     .text("Je viens de crée mon premier paragraphe en d3.")
     .attr("class", "begin")
-    .style("color", "red")
+    .style("color", "green")
     .style("font-size", "20px");
 
 //Fonctions anonymes

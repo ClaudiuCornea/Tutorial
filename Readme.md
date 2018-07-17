@@ -20,7 +20,7 @@ Nous pouvons utiliser cette classe pour styliser
 le paragraphe avec du CSS ou nous pouvons le faire 
 directement avec le d3.
 ```javascript
-    .style("color", "red")
+    .style("color", "green")
     .style("font-size", "20px");
 ```
 
@@ -74,7 +74,7 @@ leurs fonctionnement.
 * .append() => création d'un élément du DOM
 * .text() => string inséré dans l'élément généré avec append()
 * .data() => selection des données
-* .enter() => débout d'une boucle qui parcourt tous les éléments de data()
+* .enter() => début d'une boucle qui parcourt tous les éléments de data()
 * .attr("attribute", "valeur") => ajout d'un attribu HTML
 * .style("propertie", "value") => ajout d'une proprièté CSS
 * 
