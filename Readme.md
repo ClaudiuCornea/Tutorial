@@ -5,7 +5,7 @@
 Rien de plus facile que de manipuler le DOM avec d3.
 Exemple avec l'ajout d'un paragraphe dans le body.
 ```javascript
-d3.select("body)
+d3.select("body")
     .selectAll("p")
     .append("p")
 ```
