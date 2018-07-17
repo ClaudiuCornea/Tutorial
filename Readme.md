@@ -24,6 +24,44 @@ directement avec le d3.
     .style("font-size", "20px");
 ```
 
+## Fonctions anonymes
+
+La librairie d3 utilise souvent des fonction anonyme
+pour des tâches bien différentes, comme pour définir
+des coordonnées, une hauteur, ...
+Il existe pricipalement deux type des fonctions anonymes :
+* _function(d)_
+* _function(d,i)_
+
+Nous allons utiliser la seconde car
+elle nous fourni plus d'information que la première.
+Pour voir son fonctionnement il nous faut des données.
+```javascript
+let data_set = [5,10,15]
+```
+Comme dans le premier exemple générons du DOM pour 
+mieux comprendre comment ça fonctionne.
+```javascript
+d3.select("body")
+    .selectAll(".p")
+    .data(dataset)
+    .enter()
+    .append("p")
+    .text(function(d,i){
+        return("La valeur de d est " + d + " et l'indice de d est " + i);
+        })
+```
+Nous pouvons utiliser les fonctions anonymes pour définir
+des attribus ou des propriètés.
+```javascript
+    .style("color",function(d){
+        if(d < 15){
+            return("red");
+        }else{
+            return("black");
+        }
+    });
+```
 
 ## Functions d3
 Dans cette section vous allez retrouver toutes 

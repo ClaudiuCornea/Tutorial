@@ -6,7 +6,7 @@ d3.select("body")
     .style("color", "red")
     .style("font-size", "20px");
 
-
+//Fonctions anonymes
 let dataset =[5,10,15];
 
 d3.select("body")
@@ -14,10 +14,10 @@ d3.select("body")
     .data(dataset)
     .enter()
     .append("p")
-    .text(function(d){
-        return(d);})
+    .text(function(d,i){
+        return("La valeur de d est " + d + " et l'indice de d est " + i);
+    })
     .style("color",function(d){
-        console.log(d);
         if(d < 15){
             return("red");
         }else{
@@ -26,7 +26,7 @@ d3.select("body")
     });
     
 d3.select("body")
-    .selectAll("rect")
+    .selectAll(".rect")
     .data(dataset)
     .enter()
     .append("rect")
@@ -47,7 +47,7 @@ let svg = d3.select("body")
             .style("width", width)
             .style("height", height);
 
-let cercle = svg.selectAll("circle")
+let cercle = svg.selectAll(".circle")
                 .data(dataset)
                 .enter()
                 .append("circle");
