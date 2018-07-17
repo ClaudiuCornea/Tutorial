@@ -1,10 +1,16 @@
+//DOM et d3
+d3.select("body")
+    .append("p")
+    .text("Je viens de crée mon premier paragraphe en d3.")
+    .attr("class", "begin")
+    .style("color", "red")
+    .style("font-size", "20px");
+
+
 let dataset =[5,10,15];
 
 d3.select("body")
-    .append("div");
-
-d3.select("body")
-    .selectAll("p")
+    .selectAll(".p")
     .data(dataset)
     .enter()
     .append("p")

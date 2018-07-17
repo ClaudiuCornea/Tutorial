@@ -5,8 +5,7 @@
 Rien de plus facile que de manipuler le DOM avec d3.
 Exemple avec l'ajout d'un paragraphe dans le body.
 ```javascript
-d3.select("body")
-    .selectAll("p")
+d3.select("body)
     .append("p")
 ```
 Ajoutons du texte dans la balise crée.
@@ -22,7 +21,7 @@ le paragraphe avec du CSS ou nous pouvons le faire
 directement avec le d3.
 ```javascript
     .style("color", "red")
-    .style("font-size", "20px")
+    .style("font-size", "20px");
 ```
 
 
