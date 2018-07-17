@@ -1,6 +1,9 @@
 let dataset =[5,10,15];
 
 d3.select("body")
+    .append("div");
+
+d3.select("body")
     .selectAll("p")
     .data(dataset)
     .enter()
