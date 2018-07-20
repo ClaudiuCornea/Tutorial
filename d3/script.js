@@ -1,5 +1,6 @@
 //DOM et d3
-d3.select("body")
+d3
+    .select("body")
     .append("p")
     .text("Je viens de crée mon premier paragraphe en d3.")
     .attr("class", "begin")
@@ -8,9 +9,9 @@ d3.select("body")
 
 //Fonctions anonymes
 let dataset =[5,10,15];
-
-d3.select("body")
-    .selectAll(".p")
+d3
+    .select("body")
+    .selectAll("p")
     .data(dataset)
     .enter()
     .append("p")
@@ -24,12 +25,15 @@ d3.select("body")
             return("black");
         }
     });
-    
-d3.select("body")
-    .selectAll(".rect")
+
+//Representations Graphiques
+    //DOM  
+d3
+    .select("body")
+    .selectAll("div")
     .data(dataset)
     .enter()
-    .append("rect")
+    .append("div")
     .attr("class","bar")
     .style("width", "25px")
     .style("height",function(d){
@@ -39,21 +43,46 @@ d3.select("body")
     .style("display","inline-block")
     .style("margin","5px");
 
+    //SVG
 let width = 500,
     height = 50;
-    
-let svg = d3.select("body")
-            .append("svg")
-            .style("width", width)
-            .style("height", height);
+let svg = d3
+    .select("body")
+    .append("svg")
+    .style("width", width)
+    .style("height", height);
 
-let cercle = svg.selectAll(".circle")
-                .data(dataset)
-                .enter()
-                .append("circle");
-                
-cercle.style("cx", function(d,i){
-        return(i * 100 + 25);})
+    //Canvas et d3
+let cercle = svg
+    .selectAll("circle")
+    .data(dataset)
+    .enter()
+    .append("circle");
+cercle
+    .style("cx", function(d,i){
+        return(i * 100 + 25);
+    })
     .style("cy", height/2)
     .style("r", function(d){
-        return(d);});
+        return(d);
+    });
+        
+let bar = svg
+    .selectAll("rect")
+    .data(dataset)
+    .enter()
+    .append("rect")
+    .style("x", function(d,i){return(i * (width / dataset.length) );})
+    .style("y", function(d){return(height - d);})
+    .style("width", width / dataset.length - 1)
+    .style("height", function(d){return(d);})
+    .style("fill","red");
+let label = svg
+    .selectAll("text")
+    .data(dataset)
+    .enter()
+    .append("text")
+    .text(function(d){return(d);})
+    .attr("x", function(d,i){return(i * (width / dataset.length) + (width / dataset.length) / 2);})
+    .attr("y", function(d){return(height - d );})
+    .style("fill", "black");
