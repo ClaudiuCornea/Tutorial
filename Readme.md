@@ -171,6 +171,49 @@ Le rayon est défini par nos données.
 ## Histogramme
 
 Nous alons voir comment réaliser un simple histogramme avec nos données.
+Pour définir les batonnets nous avons besoin de définir les propriètés suivantes :
+* height, l'hauteur du batonnet, le seul soucis que nous avons c'est que les batonnets se
+    dessient du haut vers le bas, nous allon regler les soucis plus bas
+* width, la largeur du batonnet, nous pouvons la définir en pixels ou bien en fonction de la largeur du svg
+    ```javascript
+    .style("width", width / dataset.lenght [- bar_padding])
+    ```
+    _rappel : les arguments entre [] sont optionels_
+* coordonnées x, nous allons souvent utiliser l'index de la donnée
+    ```javascript
+    //les batonnets les uns aprés les autres[ avec un margin]
+    .style("x", function(d,i){
+        return(i * (bar_width [+ bar_margin]));
+    })
+    //les batonnets équidistant sur tout le svg
+    .style("x", function(d, i){
+        return(i * (width / dataset.lenght));
+    })
+    ```
+* coordonnées y, nous allons résoudre le soucis des batonnets du haut vers le bas
+    nous allons décaler vers le bas le batonnet de toute la hauteur du svg et 
+    ensuite soustraire la hauteur que nous donne nos données
+    ```javascript
+    .style("y", function(d){
+        return(height - d);
+    })
+    ```
+* maintenant que notre histogramme est bien crée nous pouvons styliser
+   les batonnets comme nous le voulons, en d3 ou en CSS.
+Exemple:
+```javascript
+let bar = svg
+    .selectAll("rect")
+    .data(dataset)
+    .enter()
+    .append("rect")
+    .style("x", function(d,i){return(i * (width / dataset.length) );})
+    .style("y", function(d){return(height - d);})
+    .style("width", width / dataset.length - 1)
+    .style("height", function(d){return(d);})
+    .style("fill","red");
+```
+
 
 ## Functions d3
 Dans cette section vous allez retrouver toutes 

@@ -76,7 +76,21 @@ let bar = svg
     .style("y", function(d){return(height - d);})
     .style("width", width / dataset.length - 1)
     .style("height", function(d){return(d);})
-    .style("fill","red");
+    .style("fill","red")
+    .on("mouseover", function(){
+        d3
+            .selectAll("rect")
+            .style("opacity", 0.3);
+        d3
+            .select(this)
+            .style("opacity", 1);
+    })
+    .on("mouseout",function(){
+        d3
+            .selectAll("rect")
+            .style("opacity", 1);
+
+    });
 let label = svg
     .selectAll("text")
     .data(dataset)
