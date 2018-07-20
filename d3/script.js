@@ -66,7 +66,8 @@ cercle
     .style("r", function(d){
         return(d);
     });
-        
+
+//Histogramme        
 let bar = svg
     .selectAll("rect")
     .data(dataset)
@@ -77,6 +78,7 @@ let bar = svg
     .style("width", width / dataset.length - 1)
     .style("height", function(d){return(d);})
     .style("fill","red")
+    //Interactivité
     .on("mouseover", function(){
         d3
             .selectAll("rect")

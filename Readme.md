@@ -220,6 +220,38 @@ let bar = svg
     .style("fill","red");
 ```
 
+### Interactivité
+
+Maintenant que nous avons notre histogramme crée on va rajouter un peu
+d'intercativité avec le graphique pour qu'on puisse mieux observer les données.
+Par exemple, nous allons mettre en avant le batonnet que nous allons survolé
+avec la souris.
+En d3, pour garder un seul batonnet opaque, il faut rendre tous les batonnets
+trasparent et ensuite changer l'opacité de cellui survolé.
+```javascript
+    .on("mouseover", function(){
+        d3
+            .selectAll("rect")
+            .style("opacity", 0.3);
+        d3
+            .select(this)
+            .style("opacity", 1);
+    })
+```
+Sans oublié le cas ou le graphique n'est pas survolé par la souris.
+```javascript
+    .on("mouseout",function(){
+        d3
+            .selectAll("rect")
+            .style("opacity", 1);
+
+    })
+```
+Il suffit de rajouter l'intercativité dans la délaration des batonnets (bar)
+pour que cela fonctionnne.
+
+
+
 
 ## Functions d3
 Dans cette section vous allez retrouver toutes 
