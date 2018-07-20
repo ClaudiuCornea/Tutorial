@@ -11,7 +11,7 @@ d3
 let dataset =[5,10,15];
 d3
     .select("body")
-    .selectAll("p")
+    .selectAll(".p")
     .data(dataset)
     .enter()
     .append("p")
@@ -30,7 +30,7 @@ d3
     //DOM  
 d3
     .select("body")
-    .selectAll("div")
+    .selectAll(".div")
     .data(dataset)
     .enter()
     .append("div")
@@ -54,7 +54,7 @@ let svg = d3
 
     //Canvas et d3
 let cercle = svg
-    .selectAll("circle")
+    .selectAll(".circle")
     .data(dataset)
     .enter()
     .append("circle");
@@ -69,19 +69,25 @@ cercle
 
 //Histogramme        
 let bar = svg
-    .selectAll("rect")
+    .selectAll(".rect")
     .data(dataset)
     .enter()
     .append("rect")
-    .style("x", function(d,i){return(i * (width / dataset.length) );})
-    .style("y", function(d){return(height - d);})
+    .style("x", function(d,i){
+        return(i * (width / dataset.length) );
+    })
+    .style("y", function(d){
+        return(height - d);
+    })
     .style("width", width / dataset.length - 1)
-    .style("height", function(d){return(d);})
+    .style("height", function(d){
+        return(d);
+    })
     .style("fill","red")
     //Interactivité
     .on("mouseover", function(){
         d3
-            .selectAll("rect")
+            .selectAll(".rect")
             .style("opacity", 0.3);
         d3
             .select(this)
@@ -89,16 +95,19 @@ let bar = svg
     })
     .on("mouseout",function(){
         d3
-            .selectAll("rect")
+            .selectAll(".rect")
             .style("opacity", 1);
 
     });
+    //Label
 let label = svg
-    .selectAll("text")
+    .selectAll(".text")
     .data(dataset)
     .enter()
     .append("text")
-    .text(function(d){return(d);})
+    .text(function(d){
+        return(d);
+    })
     .attr("x", function(d,i){
         return(i * (width / dataset.length) + (width / dataset.length) / 2);
     })

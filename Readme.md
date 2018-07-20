@@ -45,7 +45,7 @@ mieux comprendre comment ça fonctionne.
 ```javascript
 d3
     .select("body")
-    .selectAll("p")
+    .selectAll(".p")
     .data(dataset)
     .enter()
     .append("p")
@@ -80,7 +80,7 @@ Pour réaliser cet histogramme nous allons créer des div dans le DOM.
 ```javascript
 d3
     .select("body")
-    .selectAll("div")
+    .selectAll(".div")
     .data(dataset)
     .enter()
     .append("div")
@@ -148,7 +148,7 @@ veut dessiner le cercle (horlogé ou anti-horlogé).
 Avec d3 nous allons utiliser les même paramètres pour dessiner des cercles.
 ```javascript
 let cercle = svg
-    .selectAll("circle")
+    .selectAll(".circle")
     .data(dataset)
     .enter()
     .append("circle");
@@ -203,7 +203,7 @@ Pour définir les batonnets nous avons besoin de définir les propriètés suiva
 Exemple:
 ```javascript
 let bar = svg
-    .selectAll("rect")
+    .selectAll(".rect")
     .data(dataset)
     .enter()
     .append("rect")
@@ -231,7 +231,7 @@ trasparent et ensuite changer l'opacité de cellui survolé.
 ```javascript
     .on("mouseover", function(){
         d3
-            .selectAll("rect")
+            .selectAll(".rect")
             .style("opacity", 0.3);
         d3
             .select(this)
@@ -242,7 +242,7 @@ Sans oublié le cas ou le graphique n'est pas survolé par la souris.
 ```javascript
     .on("mouseout",function(){
         d3
-            .selectAll("rect")
+            .selectAll(".rect")
             .style("opacity", 1);
 
     })
@@ -256,7 +256,7 @@ Parfois il peut-être utile d'afficher le valeur de chaque batonnet dans le grap
 Pour le faire nous allons simplement ajouter du texte en haut des batonnets.
 ```javascript
 let label = svg
-    .selectAll("text")
+    .selectAll(".text")
     .data(dataset)
     .enter()
     .append("text")
