@@ -207,10 +207,16 @@ let bar = svg
     .data(dataset)
     .enter()
     .append("rect")
-    .style("x", function(d,i){return(i * (width / dataset.length) );})
-    .style("y", function(d){return(height - d);})
+    .style("x", function(d,i){
+        return(i * (width / dataset.length) );
+    })
+    .style("y", function(d){
+        return(height - d);
+    })
     .style("width", width / dataset.length - 1)
-    .style("height", function(d){return(d);})
+    .style("height", function(d){
+        return(d);
+    })
     .style("fill","red");
 ```
 
