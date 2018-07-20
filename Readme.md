@@ -273,6 +273,84 @@ let label = svg
 Avec l'intercativité vu précedament vous pouvez faire en sorte que le label
 soit visible seulement au survol de la souris.
 
+## Données
+
+Jusqu'à present nous avons travaillé avec des données dans un tableau
+a une dimension.
+```javascript
+let data_set = [5,10,15]
+```
+Maintenant nous allons voir comment uti un tableau avec des objets
+qui contiennent les informations nécesaires pour refaire
+le même histogramme que jusqu'à present.
+```javascript
+let data_obj = [
+    {x : 0,
+    y : 5},
+    {x : 1,
+    y : 10},
+    {x : 2,
+    y : 15}
+];
+```
+Même avec les données sous cette forme, c'est aussi simple qu'avant
+il suffit juste de bien indiquer ou chercher l'information.
+```javascript
+let bar_obj = svg
+    .selectAll(".rect")
+    .data(data_obj)
+    .enter()
+    .append("rect")
+    .style("x", function(d){
+        return(d.x * (width / data_obj.length) );
+    })
+    .style("y", function(d){
+        return(height - d.y);
+    })
+    .style("width", width / data_obj.length - 1)
+    .style("height", function(d){
+        return(d.y);
+    })
+    .style("fill","blue");
+```
+Comme vous pouvez le voir nous n'avons rien changé a notre graphique
+autre le fait que nous utilisons plus l'index car nous avons des
+données sous la forme (x,y).
+
+## Echelles
+
+Jusqu'à maintenant nous nous sommes contenté d'afficher les données
+sans se soucier des echelles. Elles sont pratiques pour afficher
+les données dans notre svg car pour tout afficher dans l'espace 
+limité qui est le svg il faut tout proportionné pour pouvoir
+afficher toutes les données des plus grandes au plus petites.
+Pour définir une echelle en d3 il nous faut définir le domaine
+de nos donnée, cad. la plage de donnée comprise entre la valeur
+la plus petit et la valeur la plus grand des données.
+Et nous avons besoin de définir aussi la zone du svg que nous 
+allons utilisé pour le graphique.
+
+### Echelle linéaire
+
+L'echelle linéaire est l'echelle que nous allons utiliser le plus
+souvent et c'est l'echelle que tout le monde connaît, elle est composé
+d'une suite de nombre qui se suivent.
+Prenos nos données défini précédement pour créer les echelles de notre
+graphique, n'oubliez pas qu'un graphique a deux echelles une x et une y.
+Nous allons le faire de manière statique, nous connaissons toutes nos
+données.
+```javascript
+let x_scale = d3
+    .scaleLinear()
+    .domain([0 , 3])
+    .range([0 , 500]);
+let y_scale = d3
+    .scaleLinear()
+    .domain([0,20])
+    .range([0,50]);
+```
+
+    
 
 ## Functions d3
 Dans cette section vous allez retrouver toutes 

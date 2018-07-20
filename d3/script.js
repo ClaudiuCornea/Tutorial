@@ -114,3 +114,39 @@ let label = svg
     .attr("y", function(d){
         return(height - d );
     });
+    
+    
+let data_obj = [
+    {x : 0,
+    y : 5},
+    {x : 1,
+    y : 10},
+    {x: 2,
+    y : 15}
+];
+
+let x_scale = d3
+    .scaleLinear()
+    .domain([0 , 3])
+    .range([0 , width]);
+let y_scale = d3
+    .scaleLinear()
+    .domain([20,0])
+    .range([0,height]);
+
+let bar_obj = svg
+    .selectAll(".rect")
+    .data(data_obj)
+    .enter()
+    .append("rect")
+    .style("x", function(d){
+        return(x_scale(d.x));
+    })
+    .style("y", function(d){
+        return(y_scale(d.y));
+    })
+    .style("width", width / data_obj.length)
+    .style("height", function(d){
+        return(height - y_scale(d.y));
+    })
+    .style("fill","blue");
