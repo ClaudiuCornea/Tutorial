@@ -250,7 +250,28 @@ Sans oublié le cas ou le graphique n'est pas survolé par la souris.
 Il suffit de rajouter l'intercativité dans la délaration des batonnets (bar)
 pour que cela fonctionnne.
 
+### Label
 
+Parfois il peut-être utile d'afficher le valeur de chaque batonnet dans le graphique.
+Pour le faire nous allons simplement ajouter du texte en haut des batonnets.
+```javascript
+let label = svg
+    .selectAll("text")
+    .data(dataset)
+    .enter()
+    .append("text")
+    .text(function(d){
+        return(d);
+    })
+    .attr("x", function(d,i){
+        return(i * (width / dataset.length) + (width / dataset.length) / 2);
+    })
+    .attr("y", function(d){
+        return(height - d );
+    });
+```
+Avec l'intercativité vu précedament vous pouvez faire en sorte que le label
+soit visible seulement au survol de la souris.
 
 
 ## Functions d3
@@ -267,6 +288,7 @@ leurs fonctionnement.
 * .enter() => début d'une boucle qui parcourt tous les éléments de data()
 * .attr("attribute", "valeur") => ajout d'un attribu HTML
 * .style("propertie", "value") => ajout d'une proprièté CSS
+* .on("event",function) => lance une fonction si on evenement se produit
 
 * _function(d){return(d);}_ => fonction anonyme renvoie l'élément(d) parcouru par enter()
 * _function(d,i){return(d,i);}_ => pareil que la fonction précédente avec l'index(i) de de l'élément en plus

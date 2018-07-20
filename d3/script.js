@@ -99,6 +99,9 @@ let label = svg
     .enter()
     .append("text")
     .text(function(d){return(d);})
-    .attr("x", function(d,i){return(i * (width / dataset.length) + (width / dataset.length) / 2);})
-    .attr("y", function(d){return(height - d );})
-    .style("fill", "black");
+    .attr("x", function(d,i){
+        return(i * (width / dataset.length) + (width / dataset.length) / 2);
+    })
+    .attr("y", function(d){
+        return(height - d );
+    });
