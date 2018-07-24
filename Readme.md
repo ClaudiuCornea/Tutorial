@@ -385,7 +385,7 @@ raisons, alors automatisons ça.
     .domain(d3.extent(data, function(d){return(d.x);}));
 ```
 *N'essayez pas avec nos donnée (data_obj) ça ne vas pas fonctionné du fait qu'il n'y a pas assez de données.*
-
+_d3.extent() est a utiliser avec les données non numérique._
 ### Echelle de temps
 
 Si jamais nous voulons utiliser des dates a la place des nombres
@@ -398,9 +398,34 @@ time_data.forEach(function(d){
     d.year = parseTime(d.year);
 });
 let time_scale = d3
+    .scaleTime()
     .range()
     .domain();
 ```
+### echelle ordinale
+
+Contrairement à ce que nous avons vu jusqu'à présent avec un domaine
+et une partie du svg nécesaires pour définir l'echelle, ici nous n'avons
+pas besoin de l'un ni de l'autre.
+Ici nous n'utilions pas les données mais plutôt un tableau avec les elements
+qui nous intéressent que nous allons utiliser pour définir "_la plage de données_",
+et si nous définissons un domaine il y aura une relation directe entre les deux.
+exemple :
+```javascript
+let data = [1, 2, 3, 4, 5];
+let ordinal_scale = d3
+    .scaleOrdinal()
+    .domain(data)
+    .range(["one", "two", "three", "four", "five"]);
+ordinal_scale(1); //"one"
+ordinal_scale(3); //"three"
+
+```
+Nous utilisons souvent ce type d'echelle pour jouer avec les
+couleurs, pour créer des axes avec du texte, ...
+
+### Echelle à bande
+
 
 ## Functions d3
 Dans cette section vous allez retrouver toutes 
