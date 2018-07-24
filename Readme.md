@@ -412,10 +412,9 @@ qui nous intéressent que nous allons utiliser pour définir "_la plage de donn�
 et si nous définissons un domaine il y aura une relation directe entre les deux.
 exemple :
 ```javascript
-let data = [1, 2, 3, 4, 5];
 let ordinal_scale = d3
     .scaleOrdinal()
-    .domain(data)
+    .domain([1, 2, 3, 4, 5])
     .range(["one", "two", "three", "four", "five"]);
 ordinal_scale(1); //"one"
 ordinal_scale(3); //"three"

@@ -149,3 +149,4 @@ let bar_obj = svg
         return(height - y_scale(d.y));
     })
     .style("fill","blue");
+
