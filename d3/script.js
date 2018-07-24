@@ -115,7 +115,7 @@ let label = svg
         return(height - d );
     });
     
-    
+//Données    
 let data_obj = [
     {x : 0,
     y : 5},
@@ -133,7 +133,6 @@ let y_scale = d3
     .scaleLinear()
     .domain([20,0])
     .range([0,height]);
-
 let bar_obj = svg
     .selectAll(".rect")
     .data(data_obj)

@@ -346,11 +346,61 @@ let x_scale = d3
     .range([0 , 500]);
 let y_scale = d3
     .scaleLinear()
-    .domain([0,20])
+    .domain([20,0])
     .range([0,50]);
 ```
+_Pour l'echelle de l'axe y le domaine est inversée._
 
-    
+maintenant appliquons l'echelle définie précédement a nos données,
+il suffit juste de faire appel a la variable que nous avons crée
+comme on fait appel a une fonction avec comme arguments la donnée
+utilisée.
+```javascript
+let bar_obj = svg
+    .selectAll(".rect")
+    .data(data_obj)
+    .enter()
+    .append("rect")
+    .style("x", function(d){
+        return(x_scale(d.x));
+    })
+    .style("y", function(d){
+        return(y_scale(d.y));
+    })
+    .style("width", width / data_obj.length)
+    .style("height", function(d){
+        return(height - y_scale(d.y));
+    })
+    .style("fill","blue");
+```
+#### Echelle dynamique
+
+Nous avons nous même défini les valeurs minimales et maximales de nos echelles
+mais dans la plus part des cas on ne pourrait pas le faire pour de multiples
+raisons, alors automatisons ça.
+```javascript
+    .domain([d3.min(data, function(d){return(d.x);}),
+        d3.max(data, function(d){return(d.x);})]);
+        //ou bien
+    .domain(d3.extent(data, function(d){return(d.x);}));
+```
+*N'essayez pas avec nos donnée (data_obj) ça ne vas pas fonctionné du fait qu'il n'y a pas assez de données.*
+
+### Echelle de temps
+
+Si jamais nous voulons utiliser des dates a la place des nombres
+sur un axe nous avons une fonction prédéfinie en d3, trés semblables
+à l'echelle précédente. Mais avant de l'utiliser nous devons transformer
+nos données dans le bon format.
+```javascript
+let parseTime = d3.timeParse("%Y");
+time_data.forEach(function(d){
+    d.year = parseTime(d.year);
+});
+let time_scale = d3
+    .range()
+    .domain();
+```
 
 ## Functions d3
 Dans cette section vous allez retrouver toutes 
@@ -367,6 +417,8 @@ leurs fonctionnement.
 * .attr("attribute", "valeur") => ajout d'un attribu HTML
 * .style("propertie", "value") => ajout d'une proprièté CSS
 * .on("event",function) => lance une fonction si on evenement se produit
+* .domain() => plage de données qui contient la plus petite et la plus grande valeur des données, les arguments doivent être des entiers
+* .range() => partie du svg utilisée pour le graphique
 
 * _function(d){return(d);}_ => fonction anonyme renvoie l'élément(d) parcouru par enter()
 * _function(d,i){return(d,i);}_ => pareil que la fonction précédente avec l'index(i) de de l'élément en plus
