@@ -425,6 +425,112 @@ couleurs, pour créer des axes avec du texte, ...
 
 ### Echelle à bande
 
+L'echelle à bandes est fortement utilisée pour la création d'histogrammes
+car elle nous donne directement les batonnets de celui-ci sans devoir calculer
+quoi que ce soit. Ses paramètres sont le même pour l'echelle linéaire, le seul
+changement est au niveau du domaine, nous devons lui donner toutes les données
+sous la forme d'un tableau, on utilisera un .map.
+```javascript
+let band_scale = d3
+    .scaleBand()
+    .domain(data_obj.map(function(d){return(d.x);}))
+    .range([0 , width]);
+```
+Nous avons parlé du fait que la taille des batonnets du histogramme
+nous est donnée par l'echelle.
+```javascript
+.style("width", width / data_obj.length) //Jusqu'à présent
+.style("width", band_scale.bandwidth()) //Avec l'echelle à bandes
+``````
+
+### Autres echelles
+
+Il existe d'autres echelles définie dans d3, comme l'echelle logarithmique.
+Elles sont toutes définie et fonctionnent de la même manière que nous avons
+vu précédement.
+Je n'ai pas non plus expliqué toutes les fonctions lié aux echelles expliqué
+jusqu'à present, à vous de les décrouvrir.
+
+
+### Afficher l'echelle
+
+Nous avons vu comment définir les echelles, maintenant nous allons
+voir comment les afficher dans notre svg.
+Mais en premier il faut faire de la place pour les afficher
+dans le svg, nous allons donc définir des margins.
+```javascript
+let margin ={
+    "top" : 5,
+    "right" : 10,
+    "bottom" : 5,
+    "left" : 5
+    };
+```
+Voyons ce qui va changer pour nous si nous rajoutons des margins a notre
+svg.
+```javascript
+let band_scale = d3
+    .scaleBand()
+    .domain(data_obj.map(function(d){return(d.x);}))
+    .range([margin.left , width - margin.right]);
+let y_scale = d3
+    .scaleLinear()
+    .domain([20,0])
+    .range([margin.top , height - margin.bottom]);
+let bar_obj = svg
+    .selectAll(".rect")
+    .data(data_obj)
+    .enter()
+    .append("rect")
+    .style("x", function(d){
+        return(band_scale(d.x));
+    })
+    .style("y", function(d){
+        return(y_scale(d.y));
+    })
+    .style("width", band_scale.bandwidth())
+    .style("height", function(d){
+        return(height - margin.bottom - y_scale(d.y));
+    })
+    .style("fill","blue");
+```
+maintenant créons nos axes et Ajoutons les sur le svg.
+```javascript
+let x_axis = d3
+    .axisBottom(band_scale);
+svg
+    .append("g")
+    .attr("transform", "translate(0 ," + (height - margin.bottom) + ")")
+    .call(x_axis);
+let y_axis = d3
+    .axisLeft(y_scale);
+svg
+    .append("g")
+    .attr("transform", "translate(" + margin.left + ",0)")
+    .call(y_axis);
+```
+Nous définissons l'axe en fonction de de l'echelle et nous indiquons
+dans quels sens doit se faire l'écriture de l'echelle, informations
+vers le bas/haut/droite/gauche. Et ensuite avec une translation nous
+la mettons au bon endroit lors de son ajout sur le svg.
+Nous Pouvons également styliser notre echelle, couleurs, changer
+la taille de la police, la rotation et autre, pour le texte affiche.
+Exemple : 
+```javascript
+svg
+    .append("g")
+    .attr("transform", "translate(0 ," + (height - margin.bottom) + ")")
+    .call(x_axis)
+    .selectAll("text")
+    .style("text-anchor", "end")
+    .attr("dx","-0.5em")
+    .attr("dy", "-.55em")
+    .attr("transform", "rotate(90)");
+```
+
+## Graphique linéaire
+
+
 
 ## Functions d3
 Dans cette section vous allez retrouver toutes 

@@ -125,28 +125,60 @@ let data_obj = [
     y : 15}
 ];
 
+let margin ={
+    "top" : 0,
+    "right" : 0,
+    "bottom" : 10,
+    "left" : 10
+    };
+
 let x_scale = d3
     .scaleLinear()
     .domain([0 , 3])
     .range([0 , width]);
+
+let band_scale = d3
+    .scaleBand()
+    .domain(data_obj.map(function(d){return(d.x);}))
+    .range([margin.left , width - margin.right]);
+
 let y_scale = d3
     .scaleLinear()
     .domain([20,0])
-    .range([0,height]);
+    .range([margin.top , height - margin.bottom]);
 let bar_obj = svg
     .selectAll(".rect")
     .data(data_obj)
     .enter()
     .append("rect")
     .style("x", function(d){
-        return(x_scale(d.x));
+        return(band_scale(d.x));
     })
     .style("y", function(d){
         return(y_scale(d.y));
     })
-    .style("width", width / data_obj.length)
+    .style("width", band_scale.bandwidth())
     .style("height", function(d){
-        return(height - y_scale(d.y));
+        return(height - margin.bottom - y_scale(d.y));
     })
     .style("fill","blue");
 
+
+let x_axis = d3
+    .axisBottom(band_scale);
+svg
+    .append("g")
+    .attr("transform", "translate(0 ," + (height - margin.bottom) + ")")
+    .call(x_axis)
+    .selectAll("text")
+    .style("text-anchor", "end")
+    .attr("dx","-0.5em")
+    .attr("dy", "-.55em")
+    .attr("transform", "rotate(90)");
+
+let y_axis = d3
+    .axisLeft(y_scale);
+svg
+    .append("g")
+    .attr("transform", "translate(" + margin.left + ",0)")
+    .call(y_axis);
