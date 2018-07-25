@@ -182,3 +182,20 @@ svg
     .append("g")
     .attr("transform", "translate(" + margin.left + ",0)")
     .call(y_axis);
+    
+let line_graph = d3
+    .line()
+    .x(function(d){
+        return(x_scale(d.x));
+    
+    })
+    .y(function(d){
+        return(y_scale(d.y));
+    });
+    
+svg
+    .append("path")
+    .attr("d",line_graph(data_obj,x_scale,y_scale))
+    .attr("stroke","green")
+    .attr("stroke-width", 1)
+    .attr("fill", "none");
