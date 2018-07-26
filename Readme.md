@@ -532,6 +532,38 @@ svg
 Maintenant que nous savons faire des histogrammes nous allons passer aux
 graphiques linéaires. Nous allons réutiliser tout ce que nous avons appris
 sur les échelles, c'est valable pour tous les types de graphiques.
+Aprés avoir créee le svg, définit les échelles et ajouté les axes, nous
+devons définir comment nous allons déssiner notre ligne, point par point.
+```javascript
+let line_graph = d3
+    .line()
+    .x(function(d){
+        return(x_scale(d.x));
+    
+    })
+    .y(function(d){
+        return(y_scale(d.y));
+    });
+```
+Ensuite il suffit de faire comme en Canvas, créee un chemin qui parcourt
+nos points un à un afin de créee notre ligne.
+```javascript
+svg
+    .append("path")
+    .attr("d",line_graph(data_obj))
+```
+*Lorsque nous avons définit line_graph, nous avons définit une fonction en réalité qui a comme argument l'objet qui contient nos données.*
+Voila, notre ligne est présente, mais elle est invisible pour le moment
+car nous n'avons défini aucune couleur.
+```javascript
+    .style("stroke","green")
+    .style("stroke-width", 1)
+    .style("fill", "none");
+```
+Nous allons voir plus tard comment réaliser un graphique avec
+une multitude de lignes.
+
+## Diagramme circulaire
 
 ## Functions d3
 Dans cette section vous allez retrouver toutes 

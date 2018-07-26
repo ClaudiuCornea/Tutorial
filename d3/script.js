@@ -195,7 +195,10 @@ let line_graph = d3
     
 svg
     .append("path")
-    .attr("d",line_graph(data_obj,x_scale,y_scale))
-    .attr("stroke","green")
-    .attr("stroke-width", 1)
-    .attr("fill", "none");
+    .attr("d",line_graph(data_obj))
+    .style("stroke","green")
+    .style("stroke-width", 1)
+    .style("fill", "none");
+
+let autre = d3.pie(dataset);
+console.log(autre);
