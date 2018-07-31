@@ -200,5 +200,84 @@ svg
     .style("stroke-width", 1)
     .style("fill", "none");
 
-let autre = d3.pie(dataset);
-console.log(autre);
+let svg_2 = d3
+    .select("body")
+    .append("svg")
+    .style("width", width)
+    .style("height", width)
+    .append("g")
+    .attr("transform", "translate(" + width / 2 + "," + width / 2 + ")");
+    
+let arc = d3
+    .arc()
+    .innerRadius(20)
+    .outerRadius(width / 2);
+    
+let pie = d3
+    .pie()
+    .sort(null)
+    .value(function(d){
+        return(d.y);
+    });
+    
+let graph = svg_2
+    .selectAll("arc")
+    .data(pie(data_obj))
+    .enter()
+    .append("path")
+    .attr("d",arc)
+    .style("fill", "blue")
+    .style("stroke","black");
+
+let label_arc = d3
+    .arc()
+    .innerRadius((width / 2) - 20)
+    .outerRadius((width / 2) - 20);
+    
+let label_text = svg_2
+    .selectAll("text")
+    .data(pie(data_obj))
+    .enter()
+    .append("text")
+    .attr("transform", function(d){
+        return("translate(" + label_arc.centroid(d) + ")");
+    })
+    .text(function(d){
+        return(d.data.x);
+    });
+    
+let data_complete = [
+    {"Client": "ABC",
+    "y": 202,
+    "x": 2000},
+    {"Client": "ABC",
+    "y": 215,
+    "x": 2002},
+    {"Client": "ABC",
+    "y": 179,
+    "x": 2004},
+    {"Client": "ABC",
+    "y": 199,
+    "x": 2006},
+    {"Client": "XYZ",
+    "y": 100,
+    "x": 2000},
+    {"Client": "XYZ",
+    "y": 215,
+    "x": 2002},
+    {"Client": "XYZ",
+    "y": 179,
+    "x": 2004},
+    {"Client": "XYZ",
+    "y": 199,
+    "x": 2006}
+    ];
+
+let useful_data = d3
+    .nest()
+    .key(function(d){
+        return(d.Client);
+    })
+    .entries(data_complete);
+    
+console.log(useful_data);

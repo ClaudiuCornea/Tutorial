@@ -422,11 +422,13 @@ ordinal_scale(3); //"three"
 Nous utilisons souvent ce type d'échelle pour jouer avec les
 couleurs, pour créer des axes avec du texte, ...
 
-### Echelle à bande
+### Echelle à bandes
 
 L'échelle à bandes est fortement utilisée pour la création d'histogrammes
-car elle nous donne directement les bâtonnets de celui-ci sans devoir calculer
-quoi que ce soit. Ses paramètres sont identiques pour l'échelle linéaire, le seul
+car elle nous fourni la largeur optimale des bâtonnets en fonction de
+l'espace disponible pour le graphique et en fonction de la quantité de données.
+De ce fait nos histogrammes vont avoir un rendu optimisé.
+Ses paramètres sont identiques pour l'échelle linéaire, le seul
 changement est au niveau du domaine, nous devons lui donner toutes les données
 sous la forme d'un tableau, on utilisera un .map.
 ```javascript
@@ -552,7 +554,8 @@ svg
     .append("path")
     .attr("d",line_graph(data_obj))
 ```
-*Lorsque nous avons définit line_graph, nous avons définit une fonction en réalité qui a comme argument l'objet qui contient nos données.*
+*Lorsque nous appelons la fonction line_graph, nous lui donnons comme argument l'objet qui contient nos données.*
+*Il est important de lui donner un objet car lors de la déclaration de line_graph, nous avons fourni les clés afin d'avoir les données souhaité.*
 Voila, notre ligne est présente, mais elle est invisible pour le moment
 car nous n'avons défini aucune couleur.
 ```javascript
@@ -564,6 +567,180 @@ Nous allons voir plus tard comment réaliser un graphique avec
 une multitude de lignes.
 
 ## Diagramme circulaire
+
+Le diagramme circulaire est défini différaments des graphiques
+précédents car nous n'allons plus utiliser des coordonnées pour
+définir des points que nous allons exploiter afin d'avoir une
+représentation graphique. Nous allons utiliser des arcs de cercle.
+Nous allons devoir tout définir d'une autre manière.
+Commençons par le svg, le premier changement, nous allons déplacer
+nos axes au centre.
+```javascript
+let svg = d3
+    .select("body")
+    .append("svg")
+    .style("width", width)
+    .style("height", height)
+    .append("g")
+    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+```
+Maintenant que nous avons un élément au centre du svg, nous allons
+délimiter la taille de notre diagramme à l'aide de deux rayons,
+un pour l'extérieur du cercle, la limite extérieure du diagramme et l'autre
+pour l'intérieur du diagramme, O si nous voulons un diagramme plein (Camenbert)
+et une valeur positive si nous voulons un diagramme avec le centre vide (donut).
+```javascript
+let radius = Math.min(width, height) / 2;
+let arc = d3
+    .arc()
+    .innerRadius(0)
+    .outerRadius(radius);
+```
+Comme vu au début du tutoriel, il nous reste à définir un angle de début
+et un angle de fin pour nos arcs de cercle. La librairie d3 possède
+une fonction idéale pour cette situation, elle va nous générer toutes
+les données dont nous avons besoin à partir de nos données.
+```javascript
+let pie = d3
+    .pie()
+    .sort(null)
+    .value(function(d){
+        return(d.y);
+    });
+```
+*La fonction sort(), trie nos données par ordre croissant, nous lui donnons la valeur null si nous n'avons pas besoin d'éffectuer ce tri.*
+Voila nous avons tous les éléments du puzzle pour construire notre diagramme
+circulaire.
+```javascript
+let graph = svg
+    .selectAll("arc")
+    .data(pie(data_obj))
+    .enter()
+    .append("path")
+    .attr("d",arc)
+    .style("fill", "blue") 
+    .style("stroke","black"); //Séparation entre les différentes parties.
+```
+### Label
+Comme vu précédement, nous pouvons afficher des informations dans
+notre graphique pour rendre celui ci plus facile à lire.
+Nous allons procéder de la même manière que nous l'allons fait
+pour l'histogramme à la différence que puisque nous travaillons
+avec des arcs de cercle nous allons en ajouter un spécialement
+pour le label.
+```javascript
+let label_arc = d3
+    .arc()
+    .innerRadius(radius - 20)
+    .outerRadius(radius - 20);
+```
+Nous avons défini un nouvel arc de cercle plus petit que notre
+graphique, et puisque nous voulons que tout soit sur un cercle,
+les rayons doivent faire la même taille.
+Maintenant nous allons juste afficher les valeurs de nos données
+au centre des arcs de cercle créé par nos données.
+```javascript
+let label_text = svg
+    .selectAll("text")
+    .data(pie(data_obj))
+    .enter()
+    .append("text")
+    .attr("transform", function(d){
+        return("translate(" + label_arc.centroid(d) + ")");
+    })
+    .text(function(d){
+        return(d.data.x);
+    });
+```
+
+### Regroupement des données
+Jusqu'a présent nous avons utilisé des données sous la forme
+d'objet, avec seulement deux informations, nos coordonnées.
+Malheuresement ce type de donnée nous limite dans la représentation,
+Nous avons donc passer à la vitesse supérieure et voir comment
+faire des graphiques avec plusieurs lignes par exemple.
+Premièrement nous allons avoir des données sous cette forme.
+```javascript
+let data_complete = [
+    {"Client": "ABC",
+    "y" : 202,
+    "x" : 2000},
+    {"Client": "ABC",
+    "y" : 215,
+    "x" : 2002},
+    {"Client": "ABC",
+    "y" : 179,
+    "x" : 2004},
+    {"Client": "ABC",
+    "y" : 199,
+    "x" : 2006},
+    {"Client": "XYZ",
+    "y" : 100,
+    "x" : 2000},
+    {"Client": "XYZ",
+    "y" : 215,
+    "x" : 2002},
+    {"Client": "XYZ",
+    "y" : 179,
+    "x" : 2004},
+    {"Client": "XYZ",
+    "y" : 199,
+    "x" : 2006}
+    ];
+```
+Avec ce que nous avons vu jusqu'à présent nous ne pourrions
+pas exploiter nos données pour une quelconque représentation
+graphique.
+Avec d3 nous allons réorganiser nos données à l'aide de la
+fonction .nest(), qui à besoin d'une clé et des données
+pour nous réorganiser le tout en fonction de la clé que
+nous allons lui donner.
+```javascript
+let useful_data = d3
+    .nest()
+    .key(function(d){
+        return(d.Client);
+    })
+    .entries(data_complete);
+```
+Nos données sont sous la forme suivante à partir de maintenant:
+```javascript
+useful_data = [
+    {"key" : "ABC",
+    "values" : [
+        {"Client": "ABC",
+        "y" : 202,
+        "x" : 2000},
+        {"Client": "ABC",
+        "y" : 215,
+        "x" : 2002},
+        {"Client": "ABC",
+        "y" : 179,
+        "x" : 2004},
+        {"Client": "ABC",
+        "y" : 199,
+        "x" : 2006}
+        ]
+    },
+    {"key" : "XYZ",
+    "values" : [
+        {"Client": "XYZ",
+        "y" : 100,
+        "x" : 2000},
+        {"Client": "XYZ",
+        "y" : 215,
+        "x" : 2002},
+        {"Client": "XYZ",
+        "y" : 179,
+        "x" : 2004},
+        {"Client": "XYZ",
+        "y" : 199,
+        "x" : 2006}
+        ]
+    }];
+```
+
+
 
 ## Functions d3
 Dans cette section vous allez retrouver toutes 
