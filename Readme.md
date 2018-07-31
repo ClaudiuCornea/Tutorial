@@ -739,7 +739,36 @@ useful_data = [
         ]
     }];
 ```
+Avec les données sous cette forme nous pouvons créer nos 
+représentations graphiques, car nos données sont disposé
+d'une manière similaire à ce que nous avons vu précédement,
+un objet avec des coordonnées x et y. Nous devons juste parcourir
+nos données "Client" par "Client" et ajouter son graphique au
+svg utilisées. Nous allons utiliser .forEach pour parcourir
+nos données.Voyons ce que cela donne en pratique.
+```javascript
+useful_data.forEach(function(d,i){
+    svg
+        .append("path")
+        .attr("d",line_graph(d.values))
+        .style("stroke","red")
+        .style("stroke-width", 1)
+        .style("fill", "none");
+```
+Et voila la dérnière fonction que nous allons aborder dans ce tutoriel.
 
+##Conculsion
+
+Nous arrivons à la fin de notre route, j'espère quelle vous à été utile
+et que ça vous à permis de commencer à comprendre et apprécié cet outil
+complet et complexe qui est d3.
+
+### Mot de l'auteur
+Je me suis lancé dans la création de ce tutoriel car au cours d'un
+challenge d'une semaine je n'ai pas pu comprendre comment fonctionnait
+d3. De plus je suis quelqu'un qui aime les défis alors autant partager
+avec tout le monde quelque un Tutorial complet, car je n'ai rien trouvé
+qui explique la librairie du début jusqu'à la fin.
 
 
 ## Functions d3

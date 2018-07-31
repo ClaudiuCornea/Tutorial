@@ -273,11 +273,46 @@ let data_complete = [
     "x": 2006}
     ];
 
+let svg_3 = d3
+    .select("body")
+    .append("svg")
+    .style("width", 800)
+    .style("height", 300);
+
+let x_scale_2 = d3
+    .scaleLinear()
+    .domain([d3.min(data_complete, function(d){return(d.x);}),
+        d3.max(data_complete, function(d){return(d.x);})])
+    .range([0 , 800]);
+let y_scale_2 = d3
+    .scaleLinear()
+    .domain([d3.min(data_complete, function(d){return(d.y);}),
+        d3.max(data_complete, function(d){return(d.y);})])
+    .range([0 , 300]);
+
+let line_graph_2 = d3
+    .line()
+    .x(function(d){
+        return(x_scale_2(d.x));
+    
+    })
+    .y(function(d){
+        return(y_scale_2(d.y));
+    });
+
+
 let useful_data = d3
     .nest()
     .key(function(d){
         return(d.Client);
     })
     .entries(data_complete);
-    
-console.log(useful_data);
+
+useful_data.forEach(function(d,i){
+    svg_3
+        .append("path")
+        .attr("d",line_graph_2(d.values))
+        .style("stroke","red")
+        .style("stroke-width", 1)
+        .style("fill", "none");
+});
