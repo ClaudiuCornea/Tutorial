@@ -1,5 +1,33 @@
 # Tutorial d3
 
+## Table des matiéres
+0. [Table des matiéres](https://github.com/ClaudiuCornea/Tutorial#table-des-mati%A9res)
+1. [DOM et d3](https://github.com/ClaudiuCornea/Tutorial#dom-et-d3)
+2. [Fonctions anonymes](https://github.com/ClaudiuCornea/Tutorial#fonctions-anonymes)
+3. [Représentations graphiques](https://github.com/ClaudiuCornea/Tutorial#repr%C3%A9sentations-graphiques)
+    1. [DOM](https://github.com/ClaudiuCornea/Tutorial#dom)
+    2. [SVG](https://github.com/ClaudiuCornea/Tutorial#svg)
+    3. [Canvas et d3](https://github.com/ClaudiuCornea/Tutorial#canvas-et-d3)
+4. [Histogramme](https://github.com/ClaudiuCornea/Tutorial#histogramme)
+    1. [Interactivité](https://github.com/ClaudiuCornea/Tutorial#interactivit%C3%A9)
+    2. [Label](https://github.com/ClaudiuCornea/Tutorial#label)
+    3. [Données](https://github.com/ClaudiuCornea/Tutorial#donn%C3%A9es)
+5. [Echelles](https://github.com/ClaudiuCornea/Tutorial#echelles)
+    1. [Echelle linéaire](https://github.com/ClaudiuCornea/Tutorial#echelle-lin%C3%A9aire)
+    2. [Echelle dynamique](https://github.com/ClaudiuCornea/Tutorial#echelle-dynamique)
+    3. [Echelle de temps](https://github.com/ClaudiuCornea/Tutorial#echelle-de-temps)
+    4. [Echelle ordinale](https://github.com/ClaudiuCornea/Tutorial#echelle-ordinale)
+    5. [Echelle à bandes](https://github.com/ClaudiuCornea/Tutorial#echelle-%C3%A0-bandes)
+    6. [Autres échelles](https://github.com/ClaudiuCornea/Tutorial#autres-%C3%A9chelles)
+    7. [Afficher l'échelle](https://github.com/ClaudiuCornea/Tutorial#autres-%C3%A9chelles)
+6. [Graphique linéaire](https://github.com/ClaudiuCornea/Tutorial#graphique-lin%C3%A9aire)
+7. [Diagramme circulaire](https://github.com/ClaudiuCornea/Tutorial#diagramme-circulaire)
+    1. [Label](https://github.com/ClaudiuCornea/Tutorial#label-1)
+8. [Regroupement des données](https://github.com/ClaudiuCornea/Tutorial#regroupement-des-donn%C3%A9es)
+9. [Mot de l'auteur](https://github.com/ClaudiuCornea/Tutorial#mot-de-lauteur)
+10. [Conculsion](https://github.com/ClaudiuCornea/Tutorial#conculsion)
+    1. [Function d3](https://github.com/ClaudiuCornea/Tutorial#functions-d3)
+
 ## DOM et d3
 
 Rien de plus facile que de manipuler le DOM avec d3.
@@ -273,7 +301,7 @@ let label = svg
 Avec l'interactivité vu précédemment vous pouvez faire en sorte que le label
 soit visible seulement au survol de la souris.
 
-## Données
+### Données
 
 Jusqu'à présent nous avons travaillé avec des données dans un tableau
 à une dimension.
@@ -653,7 +681,7 @@ let label_text = svg
     });
 ```
 
-### Regroupement des données
+## Regroupement des données
 Jusqu'a présent nous avons utilisé des données sous la forme
 d'objet, avec seulement deux informations, nos coordonnées.
 Malheuresement ce type de donnée nous limite dans la représentation,
@@ -757,7 +785,7 @@ useful_data.forEach(function(d,i){
 ```
 Et voila la dérnière fonction que nous allons aborder dans ce tutoriel.
 
-##Conculsion
+## Conculsion
 
 Nous arrivons à la fin de notre route, j'espère quelle vous à été utile
 et que ça vous à permis de commencer à comprendre et apprécié cet outil
