@@ -24,9 +24,9 @@
 7. [Diagramme circulaire](https://github.com/ClaudiuCornea/Tutorial#diagramme-circulaire)
     1. [Label](https://github.com/ClaudiuCornea/Tutorial#label-1)
 8. [Regroupement des données](https://github.com/ClaudiuCornea/Tutorial#regroupement-des-donn%C3%A9es)
-9. [Mot de l'auteur](https://github.com/ClaudiuCornea/Tutorial#mot-de-lauteur)
-10. [Conculsion](https://github.com/ClaudiuCornea/Tutorial#conculsion)
-    1. [Function d3](https://github.com/ClaudiuCornea/Tutorial#functions-d3)
+9. [Conculsion](https://github.com/ClaudiuCornea/Tutorial#conculsion)
+    1. [Mot de l'auteur](https://github.com/ClaudiuCornea/Tutorial#mot-de-lauteur)
+10. [Function d3](https://github.com/ClaudiuCornea/Tutorial#functions-d3)
 
 ## DOM et d3
 
