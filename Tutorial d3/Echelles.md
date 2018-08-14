@@ -1,13 +1,13 @@
 ## Echelles
 
 ### Table des matières
-1. [Echelle linéaire]
-2. [Echelle dynamique]
-3. [Echelle de temps]
-4. [Echelle ordinale]
-5. [Echelle à bandes]
-6. [Autres échelles]
-7. [Afficher l'échelle]
+1. [Echelle linéaire](https://github.com/ClaudiuCornea/Tutorial/blob/master/Tutorial%20d3/Echelles.md#echelle-lin%C3%A9aire)
+2. [Echelle dynamique](https://github.com/ClaudiuCornea/Tutorial/blob/master/Tutorial%20d3/Echelles.md#echelle-dynamique)
+3. [Echelle de temps](https://github.com/ClaudiuCornea/Tutorial/blob/master/Tutorial%20d3/Echelles.md#echelle-de-temps)
+4. [Echelle ordinale](https://github.com/ClaudiuCornea/Tutorial/blob/master/Tutorial%20d3/Echelles.md#echelle-ordinale)
+5. [Echelle à bandes](https://github.com/ClaudiuCornea/Tutorial/blob/master/Tutorial%20d3/Echelles.md#echelle-%C3%A0-bandes)
+6. [Autres échelles](https://github.com/ClaudiuCornea/Tutorial/blob/master/Tutorial%20d3/Echelles.md#autres-%C3%A9chelles)
+7. [Afficher l'échelle](https://github.com/ClaudiuCornea/Tutorial/blob/master/Tutorial%20d3/Echelles.md#afficher-l%C3%A9chelle)
 
 
 Jusqu'à maintenant nous nous sommes contentés d'afficher les données
@@ -64,7 +64,7 @@ let bar_obj = svg
 ```
 [Lien CodePen.](https://codepen.io/claudiucornea/pen/qyvJeY)
 
-#### Echelle dynamique
+### Echelle dynamique
 
 Nous avons nous même défini les valeurs minimales et maximales de nos échelles
 mais dans la plupart des cas nous ne pouvons pas le faire pour de multiples

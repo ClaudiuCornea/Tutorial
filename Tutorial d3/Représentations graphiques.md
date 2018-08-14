@@ -1,9 +1,9 @@
 ## Représentations graphiques
 
 ### Table des matières
-1. [DOM]
-2. [SVG]
-3. [Canvas et d3]
+1. [DOM](https://github.com/ClaudiuCornea/Tutorial/blob/master/Tutorial%20d3/Repr%C3%A9sentations%20graphiques.md#dom)
+2. [SVG](https://github.com/ClaudiuCornea/Tutorial/blob/master/Tutorial%20d3/Repr%C3%A9sentations%20graphiques.md#svg)
+3. [Canvas et d3](https://github.com/ClaudiuCornea/Tutorial/blob/master/Tutorial%20d3/Repr%C3%A9sentations%20graphiques.md#canvas-et-d3)
 
 Puisque nous commençons à mieux comprendre comment fonctionne d3,
 nous allons commencer à l'utiliser pour sa fonction première :

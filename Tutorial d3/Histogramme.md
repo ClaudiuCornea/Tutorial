@@ -1,9 +1,9 @@
 ## Histogramme
 
 ### Table des matières
-1. [Interactivité]
-2. [Label]
-3. [Données]
+1. [Interactivité](https://github.com/ClaudiuCornea/Tutorial/blob/master/Tutorial%20d3/Histogramme.md#interactivit%C3%A9)
+2. [Label](https://github.com/ClaudiuCornea/Tutorial/blob/master/Tutorial%20d3/Histogramme.md#label)
+3. [Données](https://github.com/ClaudiuCornea/Tutorial/blob/master/Tutorial%20d3/Histogramme.md#donn%C3%A9es)
 
 Nous allons voir comment réaliser un simple histogramme avec nos données.
 Pour définir les bâtonnets nous avons besoin de définir les propriétés suivantes :
