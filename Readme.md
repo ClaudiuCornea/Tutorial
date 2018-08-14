@@ -1,7 +1,7 @@
 # Tutoriel d3
 
 ## Table des matières
-0. d3, qu'est ce que c'est? Et pourquoi l'adopter?
+0. [d3, qu'est ce que c'est? Et pourquoi l'adopter?](https://github.com/ClaudiuCornea/Tutorial#d3-quest-ce-que-cest-et-pourquoi-ladopter)
 1. [DOM et d3](https://github.com/ClaudiuCornea/Tutorial#dom-et-d3)
 2. [Fonctions anonymes](https://github.com/ClaudiuCornea/Tutorial#fonctions-anonymes)
 3. [Représentations graphiques](https://github.com/ClaudiuCornea/Tutorial#repr%C3%A9sentations-graphiques)
@@ -160,8 +160,8 @@ En conclusion, tout peut-être défini soit en CSS soit en d3.
 Cependant, si on définit la mếme propriété en CSS et en d3,
 le second va écraser les valeurs du premier, de ce fait
 nous pouvons définir height dans le CSS et en d3, seule
-la valeur de d3 sera prise en compte.
-[Lien CodePen, seulement d3.](https://codepen.io/claudiucornea/pen/PBLdeO)
+la valeur de d3 sera prise en compte.     
+[Lien CodePen, seulement d3.](https://codepen.io/claudiucornea/pen/PBLdeO)     
 [Lien CodePen, d3 et CSS.](https://codepen.io/claudiucornea/pen/YjgORZ)
 
 
@@ -218,7 +218,7 @@ l'index de la donnée, nous l'avons multiplié par 100 pour espacer
 les cercles les uns des autres et nous avons ajouté 25 pour effectuer
 une translation vers la droite.
 Pour _cy_ nous avons juste choisi le milieu du svg.
-Le rayon est défini par nos données.
+Le rayon est défini par nos données.    
 [Lien CodePen.](https://codepen.io/claudiucornea/pen/XBQEXg)
 
 ## Histogramme
@@ -302,7 +302,7 @@ Sans oublier le cas où le graphique n'est pas survolé par la souris.
     })
 ```
 Il suffit de rajouter l'interactivité dans la déclaration des bâtonnets (bar)
-pour que celà fonctionnne.
+pour que celà fonctionnne.    
 [Lien CodePen.](https://codepen.io/claudiucornea/pen/mjozpG)
 
 ### Label
@@ -326,7 +326,7 @@ let label = svg
     });
 ```
 Avec l'interactivité vu précédemment vous pouvez faire en sorte que le label
-soit visible seulement au survol de la souris.
+soit visible seulement au survol de la souris.     
 [Lien CodePen.](https://codepen.io/claudiucornea/pen/VBREdx)
 
 ### Données
@@ -371,7 +371,7 @@ let bar_obj = svg
 ```
 Comme vous pouvez le voir nous n'avons rien changé à notre graphique
 autre que le fait que nous n'utilisons plus l'index car nous avons des
-données sous la forme (x,y).
+données sous la forme (x,y).      
 [Lien CodePen.](https://codepen.io/claudiucornea/pen/vaPVPV)
 
 ## Echelles
@@ -480,7 +480,7 @@ ordinal_scale(1); //"one"
 ordinal_scale(3); //"three"
 ```
 Nous utilisons souvent ce type d'échelle pour jouer avec les
-couleurs, pour créer des axes avec du texte, ...
+couleurs, pour créer des axes avec du texte, ...        
 [Lien CodePen.](https://codepen.io/claudiucornea/pen/QBPmMN)
 
 ### Echelle à bandes
@@ -573,7 +573,7 @@ svg
 Nous définissons l'axe en fonction de l'échelle et nous indiquons
 dans quels sens doit se faire l'écriture de l'échelle, informations
 vers le bas/haut/droite/gauche. Et ensuite avec une translation nous
-la mettons au bon endroit lors de son ajout sur le svg.
+la mettons au bon endroit lors de son ajout sur le svg.        
 [Lien CodePen.](https://codepen.io/claudiucornea/pen/ajMQwK)
 
 ## Graphique linéaire
@@ -611,7 +611,7 @@ car nous n'avons défini aucune couleur.
     .style("fill", "none");
 ```
 Nous allons voir plus tard comment réaliser un graphique avec
-une multitude de lignes.
+une multitude de lignes.       
 [Lien CodePen.](https://codepen.io/claudiucornea/pen/EpJXvQ)
 
 ## Diagramme circulaire
@@ -703,6 +703,7 @@ let label_text = svg
         return(d.data.x);
     });
 ```
+[Lien CodePen.](https://codepen.io/claudiucornea/pen/EpJbXQ)
 
 ## Regroupement des données
 
@@ -808,7 +809,8 @@ useful_data.forEach(function(d,i){
         .style("fill", "none");
 });
 ```
-Voici la dérnière fonction que nous allons aborder dans ce tutoriel.
+Voici la dérnière fonction que nous allons aborder dans ce tutoriel.      
+[Lien CodePen.](https://codepen.io/claudiucornea/pen/KBYyXN)
 
 ## Conclusion
 
