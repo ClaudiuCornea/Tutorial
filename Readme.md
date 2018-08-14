@@ -1,7 +1,7 @@
 # Tutoriel d3
 
 ## Table des matières
-0. [Table des matières](https://github.com/ClaudiuCornea/Tutorial#table-des-mati%A9res)
+0. d3, qu'est ce que c'est? Et pourquoi l'adopter?
 1. [DOM et d3](https://github.com/ClaudiuCornea/Tutorial#dom-et-d3)
 2. [Fonctions anonymes](https://github.com/ClaudiuCornea/Tutorial#fonctions-anonymes)
 3. [Représentations graphiques](https://github.com/ClaudiuCornea/Tutorial#repr%C3%A9sentations-graphiques)
@@ -24,9 +24,25 @@
 7. [Diagramme circulaire](https://github.com/ClaudiuCornea/Tutorial#diagramme-circulaire)
     1. [Label](https://github.com/ClaudiuCornea/Tutorial#label-1)
 8. [Regroupement des données](https://github.com/ClaudiuCornea/Tutorial#regroupement-des-donn%C3%A9es)
-9. [Conculsion](https://github.com/ClaudiuCornea/Tutorial#conculsion)
+9. [Conclusion](https://github.com/ClaudiuCornea/Tutorial#conclusion)
     1. [Mot de l'auteur](https://github.com/ClaudiuCornea/Tutorial#mot-de-lauteur)
 10. [Function d3](https://github.com/ClaudiuCornea/Tutorial#functions-d3)
+
+## d3, qu'est ce que c'est? Et pourquoi l'adopter?
+
+d3 est une librairie JS utilisée pour la représentation des données.
+C'est une librairie qui peut prendre en charge une grande quantité de
+données et donner naissance à des graphiques dynamiques et interactifs.
+De plus d3 utilise le HTML, le SVG et le CSS pour toutes ses créations,
+ce qui les rends compatible avec tous les navigateurs.
+Les premières impressions sur d3 sont souvent trompeuses, car au premier
+regard cette librairie semble complexe et difficile à comprendre,
+c'est un effet causé par la possibilité personnaliser de chaque détails.
+Pout arriver à cette liberté d'expression, d3 est munie d'une
+multitude d'outils qu'il faut apprendre à connaître et à maîtriser.
+Celà peut donner le vertige quand on voit leur nombre, mais au final
+on apprend vite à jongler avec tous les outils basiques pour en
+construire d'autres de plus en plus complexes.
 
 ## DOM et d3
 
@@ -52,6 +68,8 @@ directement avec le d3.
     .style("color", "green")
     .style("font-size", "20px");
 ```
+[Lien CodePen.](https://codepen.io/claudiucornea/pen/qyvYxO)
+
 
 ## Fonctions anonymes
 
@@ -73,12 +91,12 @@ mieux comprendre comment ça fonctionne.
 ```javascript
 d3
     .select("body")
-    .selectAll(".p")
-    .data(dataset)
+    .selectAll("p")
+    .data(data_set)
     .enter()
     .append("p")
     .text(function(d,i){
-        return("La valeur de d est " + d + " et l'indice de d est " + i);
+        return("La valeur de d est " + d + " et l'indice de d est " + i + ".");
     })
 ```
 Nous pouvons utiliser les fonctions anonymes pour définir
@@ -92,6 +110,7 @@ des attributs ou des propriétés.
         }
     });
 ```
+[Lien CodePen.](https://codepen.io/claudiucornea/pen/YjgOVW)
 
 ## Représentations graphiques
 
@@ -108,7 +127,7 @@ Pour réaliser cet histogramme nous allons créer des div dans le DOM.
 ```javascript
 d3
     .select("body")
-    .selectAll(".div")
+    .selectAll("div")
     .data(dataset)
     .enter()
     .append("div")
@@ -142,6 +161,9 @@ Cependant, si on définit la mếme propriété en CSS et en d3,
 le second va écraser les valeurs du premier, de ce fait
 nous pouvons définir height dans le CSS et en d3, seule
 la valeur de d3 sera prise en compte.
+[Lien CodePen, seulement d3.](https://codepen.io/claudiucornea/pen/PBLdeO)
+[Lien CodePen, d3 et CSS.](https://codepen.io/claudiucornea/pen/YjgORZ)
+
 
 ### SVG
 
@@ -154,14 +176,15 @@ de jeu et ne plus polluer le DOM avec une multitude de div.
 Pour définir la taille du svg nous allons le plus souvent
 utiliser des variables car elles nous seront utiles très souvent.
 ```javascript
-let width = 500,
-    height = 50;
+let width = 1000,
+    height = 500;
 let svg = d3
     .select("body")
     .append("svg")
     .style("width", width)
     .style("height", height);
 ```
+[Lien CodePen.](https://codepen.io/claudiucornea/pen/Owqoqv)
 
 ### Canvas et d3
 
@@ -177,8 +200,8 @@ nous voulons dessiner le cercle (horlogé ou anti-horlogé).
 Avec d3 nous allons utiliser les mêmes paramètres pour dessiner des cercles.
 ```javascript
 let cercle = svg
-    .selectAll(".circle")
-    .data(dataset)
+    .selectAll("circle")
+    .data(data_set)
     .enter()
     .append("circle");
 cercle
@@ -196,6 +219,7 @@ les cercles les uns des autres et nous avons ajouté 25 pour effectuer
 une translation vers la droite.
 Pour _cy_ nous avons juste choisi le milieu du svg.
 Le rayon est défini par nos données.
+[Lien CodePen.](https://codepen.io/claudiucornea/pen/XBQEXg)
 
 ## Histogramme
 
@@ -205,7 +229,7 @@ Pour définir les bâtonnets nous avons besoin de définir les propriétés suiv
     dessinent du haut vers le bas, nous allons régler les soucis plus bas
 * _width_, la largeur du bâtonnet, nous pouvons la définir en pixels ou bien en fonction de la largeur du svg
     ```javascript
-    .style("width", width / dataset.lenght [- bar_padding])
+    .style("width", width / data_set.lenght [- bar_padding])
     ```
     _rappel : les arguments entre [] sont optionels_
 * coordonnée _x_, nous allons souvent utiliser l'index de la donnée
@@ -216,7 +240,7 @@ Pour définir les bâtonnets nous avons besoin de définir les propriétés suiv
     })
     //les bâtonnets équidistants sur tout le svg
     .style("x", function(d, i){
-        return(i * (width / dataset.lenght));
+        return(i * (width / data_set.lenght));
     })
     ```
 * coordonnée _y_, nous allons résoudre le souci des bâtonnets du haut vers le bas
@@ -232,22 +256,23 @@ Pour définir les bâtonnets nous avons besoin de définir les propriétés suiv
 Exemple:
 ```javascript
 let bar = svg
-    .selectAll(".rect")
-    .data(dataset)
+    .selectAll("rect")
+    .data(data_set)
     .enter()
     .append("rect")
     .style("x", function(d,i){
-        return(i * (width / dataset.length) );
+        return(i * (width / data_set.length) );
     })
     .style("y", function(d){
         return(height - d);
     })
-    .style("width", width / dataset.length - 1)
+    .style("width", width / data_set.length - 1)
     .style("height", function(d){
         return(d);
     })
     .style("fill","red");
 ```
+[Lien CodePen.](https://codepen.io/claudiucornea/pen/GBeYEB)
 
 ### Interactivité
 
@@ -260,7 +285,7 @@ transparents et ensuite changer l'opacité de celui survolé.
 ```javascript
     .on("mouseover", function(){
         d3
-            .selectAll(".rect")
+            .selectAll("rect")
             .style("opacity", 0.3);
         d3
             .select(this)
@@ -271,13 +296,14 @@ Sans oublier le cas où le graphique n'est pas survolé par la souris.
 ```javascript
     .on("mouseout",function(){
         d3
-            .selectAll(".rect")
+            .selectAll("rect")
             .style("opacity", 1);
 
     })
 ```
 Il suffit de rajouter l'interactivité dans la déclaration des bâtonnets (bar)
 pour que celà fonctionnne.
+[Lien CodePen.](https://codepen.io/claudiucornea/pen/mjozpG)
 
 ### Label
 
@@ -285,15 +311,15 @@ Parfois il est utile d'afficher la valeur de chaque bâtonnet dans le graphique.
 Pour le faire nous allons simplement ajouter du texte en haut des bâtonnets.
 ```javascript
 let label = svg
-    .selectAll(".text")
-    .data(dataset)
+    .selectAll("text")
+    .data(data_set)
     .enter()
     .append("text")
     .text(function(d){
         return(d);
     })
     .attr("x", function(d,i){
-        return(i * (width / dataset.length) + (width / dataset.length) / 2);
+        return(i * (width / data_set.length) + (width / data_set.length) / 2);
     })
     .attr("y", function(d){
         return(height - d );
@@ -301,6 +327,7 @@ let label = svg
 ```
 Avec l'interactivité vu précédemment vous pouvez faire en sorte que le label
 soit visible seulement au survol de la souris.
+[Lien CodePen.](https://codepen.io/claudiucornea/pen/VBREdx)
 
 ### Données
 
@@ -326,7 +353,7 @@ Même avec les données sous cette forme, c'est aussi simple qu'avant
 il suffit de bien indiquer l'endroit où chercher l'information.
 ```javascript
 let bar_obj = svg
-    .selectAll(".rect")
+    .selectAll("rect")
     .data(data_obj)
     .enter()
     .append("rect")
@@ -345,6 +372,7 @@ let bar_obj = svg
 Comme vous pouvez le voir nous n'avons rien changé à notre graphique
 autre que le fait que nous n'utilisons plus l'index car nous avons des
 données sous la forme (x,y).
+[Lien CodePen.](https://codepen.io/claudiucornea/pen/vaPVPV)
 
 ## Echelles
 
@@ -371,11 +399,11 @@ Nous allons le faire de manière statique, nous connaissons toutes nos données.
 let x_scale = d3
     .scaleLinear()
     .domain([0 , 3])
-    .range([0 , 500]);
+    .range([0 , 1000]);
 let y_scale = d3
     .scaleLinear()
     .domain([20,0])
-    .range([0,50]);
+    .range([0,500]);
 ```
 _Pour l'échelle de l'axe y le domaine est inversé._
 Maintenant appliquons l'échelle définie précédemment à nos données,
@@ -400,6 +428,7 @@ let bar_obj = svg
     })
     .style("fill","blue");
 ```
+[Lien CodePen.](https://codepen.io/claudiucornea/pen/qyvJeY)
 
 #### Echelle dynamique
 
@@ -431,6 +460,7 @@ let time_scale = d3
     .range()
     .domain();
 ```
+[Lien CodePen.](https://codepen.io/claudiucornea/pen/djLZrE)
 
 ### Echelle ordinale
 
@@ -451,6 +481,7 @@ ordinal_scale(3); //"three"
 ```
 Nous utilisons souvent ce type d'échelle pour jouer avec les
 couleurs, pour créer des axes avec du texte, ...
+[Lien CodePen.](https://codepen.io/claudiucornea/pen/QBPmMN)
 
 ### Echelle à bandes
 
@@ -473,6 +504,7 @@ nous est donné par l'échelle.
 .style("width", width / data_obj.length) //Jusqu'à présent
 .style("width", band_scale.bandwidth()) //Avec l'échelle à bandes
 ``````
+[Lien CodePen.](https://codepen.io/claudiucornea/pen/RBdqRO)
 
 ### Autres échelles
 
@@ -489,10 +521,10 @@ Mais en premier lieu il faut faire de la place pour les afficher
 dans le svg, nous allons donc définir des margins.
 ```javascript
 let margin ={
-    "top" : 5,
-    "right" : 10,
-    "bottom" : 5,
-    "left" : 5
+    "top" : 20,
+    "right" : 20,
+    "bottom" : 20,
+    "left" : 20
     };
 ```
 Voyons ce qui va changer pour nous si nous rajoutons des margins à notre
@@ -542,20 +574,7 @@ Nous définissons l'axe en fonction de l'échelle et nous indiquons
 dans quels sens doit se faire l'écriture de l'échelle, informations
 vers le bas/haut/droite/gauche. Et ensuite avec une translation nous
 la mettons au bon endroit lors de son ajout sur le svg.
-Nous pouvons également styliser notre échelle, couleurs, changer
-la taille de la police, la rotation et autres, pour le texte affiché.
-Exemple : 
-```javascript
-svg
-    .append("g")
-    .attr("transform", "translate(0 ," + (height - margin.bottom) + ")")
-    .call(x_axis)
-    .selectAll("text")
-    .style("text-anchor", "end")
-    .attr("dx","-0.5em")
-    .attr("dy", "-.55em")
-    .attr("transform", "rotate(90)");
-```
+[Lien CodePen.](https://codepen.io/claudiucornea/pen/ajMQwK)
 
 ## Graphique linéaire
 
@@ -593,6 +612,7 @@ car nous n'avons défini aucune couleur.
 ```
 Nous allons voir plus tard comment réaliser un graphique avec
 une multitude de lignes.
+[Lien CodePen.](https://codepen.io/claudiucornea/pen/EpJXvQ)
 
 ## Diagramme circulaire
 
@@ -649,6 +669,7 @@ let graph = svg
     .style("fill", "blue") 
     .style("stroke","black"); //Séparation entre les différentes parties.
 ```
+[Lien CodePen.](https://codepen.io/claudiucornea/pen/oMOozM)
 
 ### Label
 
@@ -785,10 +806,11 @@ useful_data.forEach(function(d,i){
         .style("stroke","red")
         .style("stroke-width", 1)
         .style("fill", "none");
+});
 ```
 Voici la dérnière fonction que nous allons aborder dans ce tutoriel.
 
-## Conculsion
+## Conclusion
 
 Nous arrivons à la fin de notre parcourt, j'espère qu'il vous a été utile
 et que ça vous a permis à comprendre et apprécier cet outil
