@@ -1,5 +1,9 @@
 ## Graphique linéaire
 
+### Prérequis
+1. [Histogrammes]()
+2. [Echelles]()
+
 Maintenant que nous savons faire des histogrammes nous allons passer aux
 graphiques linéaires. Nous allons réutiliser tout ce que nous avons appris
 sur les échelles, c'est valable pour tous les types de graphiques.

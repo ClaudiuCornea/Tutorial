@@ -20,7 +20,7 @@ d3 est une librairie JS utilisée pour la représentation des données.
 C'est une librairie qui peut prendre en charge une grande quantité de
 données et donner naissance à des graphiques dynamiques et interactifs.
 De plus d3 utilise le HTML, le SVG et le CSS pour toutes ses créations,
-ce qui les rends compatible avec tous les navigateurs.
+ce qui la rend compatible avec tous les navigateurs.
 Les premières impressions sur d3 sont souvent trompeuses, car au premier
 regard cette librairie semble complexe et difficile à comprendre,
 c'est un effet causé par la possibilité personnaliser de chaque détails.
@@ -29,6 +29,9 @@ multitude d'outils qu'il faut apprendre à connaître et à maîtriser.
 Celà peut donner le vertige quand on voit leur nombre, mais au final
 on apprend vite à jongler avec tous les outils basiques pour en
 construire d'autres de plus en plus complexes.
+Dans ce tutoriel, nous allons apprendre à marcher avec d3 et ensuite
+nous envoler, car d3 nous permet de laisser libre cours à toute notre
+imagination
 
 ## DOM et d3
 
