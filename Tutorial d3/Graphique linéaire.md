@@ -39,3 +39,8 @@ car nous n'avons défini aucune couleur.
 Nous allons voir plus tard comment réaliser un graphique avec
 une multitude de lignes.       
 [Lien CodePen.](https://codepen.io/claudiucornea/pen/EpJXvQ)
+
+* Chapitre suivant
+    *  [Diagramme circulaire](https://github.com/ClaudiuCornea/Tutorial/blob/master/Tutorial%20d3/Diagramme%20circulaire.md#diagramme-circulaire)
+*  Chapitre précédent
+    *  [Echelles](https://github.com/ClaudiuCornea/Tutorial/blob/master/Tutorial%20d3/Echelles.md)

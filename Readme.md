@@ -10,9 +10,8 @@
 6. [Graphique linéaire](https://github.com/ClaudiuCornea/Tutorial/blob/master/Tutorial%20d3/Graphique%20lin%C3%A9aire.md)
 7. [Diagramme circulaire](https://github.com/ClaudiuCornea/Tutorial/blob/master/Tutorial%20d3/Diagramme%20circulaire.md#diagramme-circulaire)
 8. [Regroupement des données](https://github.com/ClaudiuCornea/Tutorial/blob/master/Tutorial%20d3/Regroupement%20des%20donn%C3%A9es.md)
-9. [Conclusion](https://github.com/ClaudiuCornea/Tutorial#conclusion)
-    1. [Mot de l'auteur](https://github.com/ClaudiuCornea/Tutorial#mot-de-lauteur)
-10. [Function d3](https://github.com/ClaudiuCornea/Tutorial#functions-d3)
+9. [Conclusion](https://github.com/ClaudiuCornea/Tutorial/blob/master/Tutorial%20d3/Conclusion.md#conclusion)
+10. [Function d3](https://github.com/ClaudiuCornea/Tutorial/blob/master/Tutorial%20d3/Fonctions%20d3.md#fonctions-d3)
 
 ## d3, qu'est ce que c'est? Et pourquoi l'adopter?
 

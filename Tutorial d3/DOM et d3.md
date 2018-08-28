@@ -25,3 +25,8 @@ directement avec le d3.
     .style("font-size", "20px");
 ```
 [Lien CodePen.](https://codepen.io/claudiucornea/pen/qyvYxO)
+
+* Chapitre suivant
+    *  [Fonctions anonymes](https://github.com/ClaudiuCornea/Tutorial/blob/master/Tutorial%20d3/Fonctions%20anonymes.md)
+*  Chapitre précédent
+    *  [d3, qu'est ce que c'est? Et pourquoi l'adopter?](https://github.com/ClaudiuCornea/Tutorial#d3-quest-ce-que-cest-et-pourquoi-ladopter)

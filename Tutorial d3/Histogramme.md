@@ -155,3 +155,8 @@ Comme vous pouvez le voir nous n'avons rien changé à notre graphique
 autre que le fait que nous n'utilisons plus l'index car nous avons des
 données sous la forme (x,y).      
 [Lien CodePen.](https://codepen.io/claudiucornea/pen/vaPVPV)
+
+* Chapitre suivant
+    *  [Echelles](https://github.com/ClaudiuCornea/Tutorial/blob/master/Tutorial%20d3/Echelles.md)
+*  Chapitre précédent
+    *  [Représentations graphiques](https://github.com/ClaudiuCornea/Tutorial/blob/master/Tutorial%20d3/Repr%C3%A9sentations%20graphiques.md)

@@ -209,3 +209,8 @@ dans quels sens doit se faire l'écriture de l'échelle, informations
 vers le bas/haut/droite/gauche. Et ensuite avec une translation nous
 la mettons au bon endroit lors de son ajout sur le svg.        
 [Lien CodePen.](https://codepen.io/claudiucornea/pen/ajMQwK)
+
+* Chapitre suivant
+    *  [Graphique linéaire](https://github.com/ClaudiuCornea/Tutorial/blob/master/Tutorial%20d3/Graphique%20lin%C3%A9aire.md)
+*  Chapitre précédent
+    *  [Histogramme](https://github.com/ClaudiuCornea/Tutorial/blob/master/Tutorial%20d3/Histogramme.md)

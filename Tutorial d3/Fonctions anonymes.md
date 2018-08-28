@@ -38,3 +38,8 @@ des attributs ou des propriétés.
     });
 ```
 [Lien CodePen.](https://codepen.io/claudiucornea/pen/YjgOVW)
+
+* Chapitre suivant
+    *  [Représentations graphiques](https://github.com/ClaudiuCornea/Tutorial/blob/master/Tutorial%20d3/Repr%C3%A9sentations%20graphiques.md)
+*  Chapitre précédent
+    *  [DOM et d3](https://github.com/ClaudiuCornea/Tutorial/blob/master/Tutorial%20d3/DOM%20et%20d3.md#dom-et-d3)

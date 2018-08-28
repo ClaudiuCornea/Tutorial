@@ -104,3 +104,8 @@ useful_data.forEach(function(d,i){
 ```
 Voici la dérnière fonction que nous allons aborder dans ce tutoriel.      
 [Lien CodePen.](https://codepen.io/claudiucornea/pen/KBYyXN)
+
+* Chapitre suivant
+    *  [Conclusion](https://github.com/ClaudiuCornea/Tutorial/blob/master/Tutorial%20d3/Conclusion.md#conclusion)
+*  Chapitre précédent
+    *  [Diagramme circulaire](https://github.com/ClaudiuCornea/Tutorial/blob/master/Tutorial%20d3/Diagramme%20circulaire.md#diagramme-circulaire)

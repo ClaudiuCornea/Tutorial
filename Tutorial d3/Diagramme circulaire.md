@@ -88,3 +88,8 @@ let label_text = svg
     });
 ```
 [Lien CodePen.](https://codepen.io/claudiucornea/pen/EpJbXQ)
+
+* Chapitre suivant
+    *  [Regroupement des données](https://github.com/ClaudiuCornea/Tutorial/blob/master/Tutorial%20d3/Regroupement%20des%20donn%C3%A9es.md)
+*  Chapitre précédent
+    *  [Graphique linéaire](https://github.com/ClaudiuCornea/Tutorial/blob/master/Tutorial%20d3/Graphique%20lin%C3%A9aire.md)
