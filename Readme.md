@@ -15,22 +15,17 @@
 
 ## d3, qu'est ce que c'est? Et pourquoi l'adopter?
 
-d3 est une librairie JS utilisée pour la représentation des données.
-C'est une librairie qui peut prendre en charge une grande quantité de
-données et donner naissance à des graphiques dynamiques et interactifs.
+d3 est une librairie JS utilisée pour la représentation visuelle et interactive de données.
+d3 peut prendre en charge une grande quantité de données.
 De plus d3 utilise le HTML, le SVG et le CSS pour toutes ses créations,
 ce qui la rend compatible avec tous les navigateurs.
-Les premières impressions sur d3 sont souvent trompeuses, car au premier
-regard cette librairie semble complexe et difficile à comprendre,
-c'est un effet causé par la possibilité personnaliser de chaque détails.
-Pout arriver à cette liberté d'expression, d3 est munie d'une
-multitude d'outils qu'il faut apprendre à connaître et à maîtriser.
+Au premier regard cette librairie semble complexe et difficile à comprendre.
+c'est un effet causé par la possibilité de personnaliser chaque détail.
+Pout arriver à cette liberté d'expression, d3 est munie d'une multitude d'outils qu'il faut apprendre à connaître et à maîtriser.
 Celà peut donner le vertige quand on voit leur nombre, mais au final
 on apprend vite à jongler avec tous les outils basiques pour en
 construire d'autres de plus en plus complexes.
-Dans ce tutoriel, nous allons apprendre à marcher avec d3 et ensuite
-nous envoler, car d3 nous permet de laisser libre cours à toute notre
-imagination
+Dans ce tutoriel, nous allons apprendre à marcher avec d3, pour ensuite courrir, et pourquoi pas voler, tellement cette librairie est puissante ?
 
 ## DOM et d3
 
@@ -41,9 +36,9 @@ d3
     .select("body")
     .append("p")
 ```
-Ajoutons du texte dans la balise créee.
+Ajoutons du texte dans la balise `p` créée.
 ```javascript
-    .text("Je viens de crée mon premier paragraphe en d3.")
+    .text("Je viens de créer mon premier paragraphe en d3.")
 ```
 Ajoutons maintenant une classe.
 ```javascript
@@ -56,7 +51,7 @@ directement avec le d3.
     .style("color", "green")
     .style("font-size", "20px");
 ```
-[Lien CodePen.](https://codepen.io/claudiucornea/pen/qyvYxO)
+[Voir ce code en action sur CodePen.](https://codepen.io/claudiucornea/pen/qyvYxO)
 
 
 ## Fonctions anonymes
@@ -102,16 +97,15 @@ des attributs ou des propriétés.
 
 ## Représentations graphiques
 
-Puisque nous commençons à mieux comprendre comment fonctionne d3,
-nous allons commencer à l'utiliser pour sa fonction première :
-**les représentations graphiques**. Nous allons voir une partie
-de ce que nous pouvons faire avec d3.
+Afin de mieux comprendre comment fonctionne d3,
+commençons par l'utiliser pour sa fonction première :
+**les graphiques**.
 
 ### DOM
 
 Nous pouvons utiliser d3 pour créer un histogramme directement dans
-le DOM, très déconseillé mais nous pouvons le faire.
-Pour réaliser cet histogramme nous allons créer des div dans le DOM.
+le DOM (c'est déconseillé mais possible à faire).
+Pour réaliser cet histogramme nous allons créer des `div` dans le DOM.
 ```javascript
 d3
     .select("body")
@@ -122,7 +116,7 @@ d3
     .attr("class","rect")
 ```
 Puisque nous avons ajouté une classe à nos div nous pouvons utiliser
-du CSS ou d3 pour leur donner les autres propriétés tel que la hauteur,
+du CSS ou d3 pour leur donner d'autres propriétés tel que la hauteur,
 la largeur, la couleur, ...
 En d3 :
 ```javascript
@@ -155,14 +149,14 @@ la valeur de d3 sera prise en compte.
 
 ### SVG
 
-Comme nous l'avons expliqué précedemment, faire des représentations
-graphiques directement dans le DOM est trés déconseillé. Grâce au d3
+Comme dit précédemment, faire des représentations
+graphiques directement dans le DOM est déconseillé. Grâce à d3
 nous pouvons exploiter toute la puissance du format svg pour nos
 représentations graphiques.
 A partir de maintenant nous pouvons mieux définir notre terrain
 de jeu et ne plus polluer le DOM avec une multitude de div.
 Pour définir la taille du svg nous allons le plus souvent
-utiliser des variables car elles nous seront utiles très souvent.
+utiliser des variables car elles on va les réutiliser à plusieurs endroits du code.
 ```javascript
 let width = 1000,
     height = 500;
@@ -176,7 +170,7 @@ let svg = d3
 
 ### Canvas et d3
 
-Puisque nous travaillons dans un svg nous allons retrouver beaucoup
+Puisque nous travaillons dans une balise `svg` nous allons retrouver beaucoup
 de similitudes avec le Canvas. Comme par exemple le dessin des cercles.
 En Canvas :
 ```javascript
@@ -185,7 +179,7 @@ ctx.arc(x, y, r, begin_angle, end_angle, sens)
 Nous avons besoin des coordonnées du centre du cercle (x,y), de la taille
 du rayon (r), d'un angle de départ et de fin ainsi qu'indiquer dans quel sens
 nous voulons dessiner le cercle (horlogé ou anti-horlogé).
-Avec d3 nous allons utiliser les mêmes paramètres pour dessiner des cercles.
+Avec d3 nous  utilisons les mêmes paramètres pour dessiner des cercles.
 ```javascript
 let cercle = svg
     .selectAll("circle")
@@ -202,7 +196,7 @@ cercle
     });
 ```
 Pour les coordonnées du centre nous avons _cx_ qui est défini en fonction de
-l'index de la donnée, nous l'avons multiplié par 100 pour espacer
+l'index de la donnée. Nous l'avons multiplié par 100 pour espacer
 les cercles les uns des autres et nous avons ajouté 25 pour effectuer
 une translation vers la droite.
 Pour _cy_ nous avons juste choisi le milieu du svg.
@@ -211,16 +205,20 @@ Le rayon est défini par nos données.
 
 ## Histogramme
 
-Nous allons voir comment réaliser un simple histogramme avec nos données.
+Voyons comment réaliser un simple histogramme avec nos données.
 Pour définir les bâtonnets nous avons besoin de définir les propriétés suivantes :
-* _height_, la hauteur du bâtonnet, le seul souci que nous avons c'est que les bâtonnets se
-    dessinent du haut vers le bas, nous allons régler les soucis plus bas
+
+* _height_, la hauteur du bâtonnet, le seul souci est que les bâtonnets se
+    dessinent du haut vers le bas. Nous allons régler cela par après.
+    
 * _width_, la largeur du bâtonnet, nous pouvons la définir en pixels ou bien en fonction de la largeur du svg
     ```javascript
     .style("width", width / data_set.lenght [- bar_padding])
     ```
     _rappel : les arguments entre [] sont optionels_
+    
 * coordonnée _x_, nous allons souvent utiliser l'index de la donnée
+    
     ```javascript
     //les bâtonnets les uns après les autres [avec un margin]
     .style("x", function(d,i){
@@ -231,17 +229,20 @@ Pour définir les bâtonnets nous avons besoin de définir les propriétés suiv
         return(i * (width / data_set.lenght));
     })
     ```
-* coordonnée _y_, nous allons résoudre le souci des bâtonnets du haut vers le bas
-    nous allons décaler vers le bas le bâtonnet de toute la hauteur du svg et 
-    ensuite soustraire la hauteur que nous donnent nos données
+
+* coordonnée _y_, nous allons résoudre le souci des bâtonnets du haut vers le bas, en décalant vers le bas le bâtonnet de toute la hauteur du svg et ensuite soustraire la hauteur que nous donnent nos données
+    
     ```javascript
     .style("y", function(d){
         return(height - d);
     })
     ```
-* maintenant que notre histogramme est bien crée nous pouvons styliser
+
+* maintenant que notre histogramme est bien créé nous pouvons styliser
    les bâtonnets comme nous le voulons, en d3 ou en CSS.
+
 Exemple:
+
 ```javascript
 let bar = svg
     .selectAll("rect")
@@ -264,12 +265,12 @@ let bar = svg
 
 ### Interactivité
 
-Maintenant que nous avons notre histogramme crée nous allons rajouter un peu
-d'intercativité dans le graphique afin de mieux observer les données.
-Par exemple, nous allons mettre en avant le bâtonnet que nous allons survoler
-avec la souris.
+Maintenant que nous avons notre histogramme, rajoutons un peu
+d'interactivité dans le graphique afin de mieux observer les données.
+Nous pouvons par exemple mettre en avant le bâtonnet au survol de la souris.
 En d3, pour garder un seul bâtonnet opaque, il faut rendre tous les bâtonnets
 transparents et ensuite changer l'opacité de celui survolé.
+
 ```javascript
     .on("mouseover", function(){
         d3
@@ -280,7 +281,9 @@ transparents et ensuite changer l'opacité de celui survolé.
             .style("opacity", 1);
     })
 ```
+
 Sans oublier le cas où le graphique n'est pas survolé par la souris.
+
 ```javascript
     .on("mouseout",function(){
         d3
@@ -289,14 +292,16 @@ Sans oublier le cas où le graphique n'est pas survolé par la souris.
 
     })
 ```
+
 Il suffit de rajouter l'interactivité dans la déclaration des bâtonnets (bar)
-pour que celà fonctionnne.    
+pour que cela fonctionnne.    
 [Lien CodePen.](https://codepen.io/claudiucornea/pen/mjozpG)
 
 ### Label
 
-Parfois il est utile d'afficher la valeur de chaque bâtonnet dans le graphique.
-Pour le faire nous allons simplement ajouter du texte en haut des bâtonnets.
+Affichons la valeur de chaque bâtonnet dans le graphique.
+Pour ce faire, ajoutons simplement du texte en haut des bâtonnets.
+
 ```javascript
 let label = svg
     .selectAll("text")
@@ -313,6 +318,7 @@ let label = svg
         return(height - d );
     });
 ```
+
 Avec l'interactivité vu précédemment vous pouvez faire en sorte que le label
 soit visible seulement au survol de la souris.     
 [Lien CodePen.](https://codepen.io/claudiucornea/pen/VBREdx)
@@ -321,12 +327,15 @@ soit visible seulement au survol de la souris.
 
 Jusqu'à présent nous avons travaillé avec des données dans un tableau
 à une dimension.
+
 ```javascript
 let data_set = [5,10,15]
 ```
-Maintenant nous allons voir comment utiliser un tableau avec des objets
+
+Maintenant voyons comment utiliser un tableau avec des objets
 qui contiennent les informations nécessaires pour refaire
-le même histogramme que jusqu'à présent.
+le même histogramme.
+
 ```javascript
 let data_obj = [
     {x : 0,
@@ -337,8 +346,10 @@ let data_obj = [
     y : 15}
 ];
 ```
+
 Même avec les données sous cette forme, c'est aussi simple qu'avant
 il suffit de bien indiquer l'endroit où chercher l'information.
+
 ```javascript
 let bar_obj = svg
     .selectAll("rect")
@@ -381,8 +392,8 @@ L'échelle linéaire est l'échelle que nous allons utiliser le plus
 souvent et c'est l'échelle que tout le monde connaît, elle est composée
 d'une suite de nombres qui se suivent.
 Prenons nos données définies précédemment pour créer les échelles de notre
-graphique, n'oubliez pas qu'un graphique a deux échelles une x et une y.
-Nous allons le faire de manière statique, nous connaissons toutes nos données.
+graphique. Pour rappel, un graphique a deux échelles une x et une y.
+Faison-le de manière statique. Nous connaissons toutes nos données.
 ```javascript
 let x_scale = d3
     .scaleLinear()
